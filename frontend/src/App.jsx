@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Login from "./components/Login";
 import Sidebar from "./components/Sidebar";
 import ChatArea from "./components/ChatArea";
+import "./App.css";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -66,7 +67,7 @@ export default function App() {
   }
 
   return (
-    <div className="flex h-screen bg-[#13151a] text-gray-200 font-sans">
+    <div className="app-container">
       <Sidebar
         user={user}
         onLogout={handleLogout}

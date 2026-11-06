@@ -2,13 +2,13 @@
 
 **SecurDocs AI** is an enterprise-ready **Retrieval-Augmented Generation (RAG)** platform designed with **Role-Based Access Control (RBAC)**. It enforces strict document access boundaries based on user roles and departments, ensuring users can only retrieve information they are explicitly authorized to access.
 
-The system features a **FastAPI backend** handling document ingestion, vector storage, context filtering, and response streaming, alongside a modern **React + Tailwind CSS frontend** tailored with a sleek dark theme.
+The system features a **FastAPI backend** handling document ingestion, vector storage, context filtering, and response streaming, alongside a modern **React frontend** powered by custom modular CSS stylesheets with a sleek dark theme.
 
 ## 🌟 Key Features
 
 * **Role-Based Document Authorization (RBAC):** Restricts document retrieval in ChromaDB based on department metadata and user permissions.
 
-* **Streaming AI Responses:** Real-time chunk-by-chunk answer streaming via LangChain, FastAPI `StreamingResponse`, and Groq LLMs (`openai/gpt-oss-120b`).
+* **Streaming AI Responses:** Real-time chunk-by-chunk answer streaming via LangChain, FastAPI `StreamingResponse`, and Groq LLMs.
 
 * **Multi-Format Ingestion:** Automatic chunking and ingestion of `.pdf` and `.csv` files tagged with department metadata.
 
@@ -16,32 +16,32 @@ The system features a **FastAPI backend** handling document ingestion, vector st
 
 * **FastAPI Backend:** Lightweight REST & Streaming APIs for authentication and RAG processing.
 
-* **Modern React Interface:** UI inspired by customer support portals, complete with pre-configured sample question shortcuts and persistent chat states.
+* **Modern React Interface:** UI inspired by professional support portals, complete with pre-configured sample question shortcuts and persistent chat states.
 
 ## 🏗 System Architecture
 
 ```
-               +----------------------------------+
-               |   SecurDocs AI React Frontend    |
-               | (Tailwind CSS, Lucide Icons)     |
-               +----------------------------------+
-                                |
-               HTTP POST /login | POST /chat (Stream)
-                                v
-               +----------------------------------+
-               |         FastAPI Backend          |
-               +----------------------------------+
-                  /                            \
-                 v                              v
-      +---------------------+        +---------------------+
-      |   SQLite Database   |        |   ChromaDB Vector   |
-      |   (User Roles)      |        |   Store (Filtered)  |
-      +---------------------+        +---------------------+
-                                                |
-                                                v
-                                     +--------------------+
-                                     |  Groq LLM Engine   |
-                                     +--------------------+
+            +----------------------------------+
+            |   SecurDocs AI React Frontend    |
+            | (Vanilla CSS, Lucide Icons)      |
+            +----------------------------------+
+                              |
+            HTTP POST /login | POST /chat (Stream)
+                              v
+            +----------------------------------+
+            |         FastAPI Backend          |
+            +----------------------------------+
+             /                             \
+            v                               v
+   +---------------------+       +---------------------+
+   |   SQLite Database   |       |   ChromaDB Vector   |
+   |   (User Roles)      |       |   Store (Filtered)  |
+   +---------------------+       +---------------------+
+                                             |
+                                             v
+                                 +---------------------+
+                                 |  Groq LLM Engine    |
+                                 +---------------------+
 ```
 
 ## 👥 Department Access Matrix
@@ -78,16 +78,17 @@ The system features a **FastAPI backend** handling document ingestion, vector st
 │   ├── requirements.txt        # Python dependencies
 │   └── .env                    # Environment variables (GROQ_API_KEY)
 └── frontend/
-    ├── src/
-    │   ├── components/
-    │   │   ├── Login.jsx       # Auth form
-    │   │   ├── Sidebar.jsx     # Navigation and sample questions
-    │   │   └── ChatArea.jsx    # Streaming message view and prompt box
-    │   ├── App.jsx             # Root layout and global state
-    │   ├── main.jsx            # React entry point
-    │   └── index.css           # Tailwind directives
-    ├── package.json
-    └── vite.config.js
+├── src/
+│   ├── components/
+│   │   ├── Login.jsx       # Auth form
+│   │   ├── Sidebar.jsx     # Navigation and sample questions
+│   │   └── ChatArea.jsx    # Streaming message view and prompt box
+│   ├── App.jsx             # Root layout and global state
+│   ├── main.jsx            # React entry point
+│   ├── App.css             # Custom component-level stylesheets
+│   └── index.css           # Global layout variables and styles
+├── package.json
+└── vite.config.js
 ```
 
 ## 🚀 Getting Started
@@ -166,6 +167,6 @@ The system features a **FastAPI backend** handling document ingestion, vector st
 
 ## 🛠 Tech Stack
 
-* **Frontend:** React, Vite, Tailwind CSS, Lucide React Icons
+* **Frontend:** React, Vite, CSS, Lucide React Icons
 * **Backend:** FastAPI, Uvicorn, Pydantic, SQLite
-* **AI & RAG:** LangChain, ChromaDB, HuggingFace Transformers (`all-MiniLM-L6-v2`), Groq API
+* **AI & RAG:** LangChain, ChromaDB, HuggingFace Transformers (all-MiniLM-L6-v2), Groq API

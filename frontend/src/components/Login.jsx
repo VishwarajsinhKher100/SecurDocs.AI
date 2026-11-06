@@ -27,51 +27,42 @@ export default function Login({ onLoginSuccess }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#13151b] flex items-center justify-center p-4 text-gray-200">
-      <div className="w-full max-w-md bg-[#1c1f26] border border-gray-800 rounded-xl p-8 shadow-2xl">
-        <div className="flex justify-center mb-6">
-          <div className="p-3 bg-indigo-600/20 rounded-full text-indigo-400">
-            <Lock className="w-8 h-8" />
+    <div className="login-screen">
+      <div className="login-card">
+        <div className="login-icon-wrap">
+          <div className="login-icon-bg">
+            <Lock size={32} />
           </div>
         </div>
-        <h2 className="text-2xl font-bold text-center text-white mb-2">
-          ContextGuard Login
-        </h2>
-        <p className="text-sm text-gray-400 text-center mb-6">
+        <h2 className="login-title">ContextGuard Login</h2>
+        <p className="login-subtitle">
           Enter your credentials to access authorized RAG documents.
         </p>
 
-        {loginError && (
-          <div className="mb-4 p-3 bg-red-900/30 border border-red-500/50 rounded text-red-300 text-sm">
-            {loginError}
-          </div>
-        )}
+        {loginError && <div className="login-error">{loginError}</div>}
 
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div>
-            <label className="block text-sm text-gray-400 mb-1">Username</label>
+        <form onSubmit={handleLogin} className="login-form">
+          <div className="form-group">
+            <label className="form-label">Username</label>
             <input
               type="text"
-              className="w-full px-4 py-2.5 bg-[#13151b] border border-gray-700 rounded-lg focus:outline-none focus:border-indigo-500 text-white"
+              className="form-input"
               value={usernameInput}
               onChange={(e) => setUsernameInput(e.target.value)}
               required
             />
           </div>
-          <div>
-            <label className="block text-sm text-gray-400 mb-1">Password</label>
+          <div className="form-group">
+            <label className="form-label">Password</label>
             <input
               type="password"
-              className="w-full px-4 py-2.5 bg-[#13151b] border border-gray-700 rounded-lg focus:outline-none focus:border-indigo-500 text-white"
+              className="form-input"
               value={passwordInput}
               onChange={(e) => setPasswordInput(e.target.value)}
               required
             />
           </div>
-          <button
-            type="submit"
-            className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-medium transition"
-          >
+          <button type="submit" className="login-submit-btn">
             Sign In
           </button>
         </form>

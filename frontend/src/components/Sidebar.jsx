@@ -1,5 +1,5 @@
 import React from "react";
-import { Radio, LogOut } from "lucide-react";
+import { Antenna, LogOut } from "lucide-react";
 
 const SAMPLE_QUESTIONS = [
   "Why is my mobile internet so slow?",
@@ -15,32 +15,26 @@ export default function Sidebar({
   isStreaming,
 }) {
   return (
-    <aside className="w-80 bg-[#1a1d24] border-r border-gray-800 flex flex-col justify-between p-6">
+    <aside className="sidebar">
       <div>
-        <div className="flex items-center gap-3 mb-2">
-          <Radio className="w-6 h-6 text-indigo-400" />
-          <h1 className="text-xl font-bold text-white tracking-wide">
-            Telecom Support
-          </h1>
+        <div className="sidebar-header">
+          <Antenna className="sidebar-icon" />
+          <h1 className="sidebar-title">Telecom Support</h1>
         </div>
-        <p className="text-xs text-gray-400 mb-8">
-          Powered by RAG • Qwen3-32B on Groq
-        </p>
+        <p className="sidebar-subtitle">Powered by RAG • Qwen3-32B on Groq</p>
 
-        <div className="mb-6">
-          <h3 className="text-sm font-semibold text-gray-300 mb-1">
-            Sample questions
-          </h3>
-          <p className="text-xs text-gray-500 mb-4">
-            Click one to send it instantly.
-          </p>
-          <div className="space-y-2.5">
+        <div className="sidebar-divider" />
+
+        <div>
+          <h3 className="section-title">Sample questions</h3>
+          <p className="section-subtitle">Click one to send it instantly.</p>
+          <div className="questions-list">
             {SAMPLE_QUESTIONS.map((q, idx) => (
               <button
                 key={idx}
                 onClick={() => onSelectQuestion(q)}
                 disabled={isStreaming}
-                className="w-full text-left p-3 text-xs bg-[#222630] hover:bg-[#2a2e3b] border border-gray-700/50 rounded-lg text-gray-300 transition duration-150 disabled:opacity-50"
+                className="sample-question-btn"
               >
                 {q}
               </button>
@@ -49,19 +43,13 @@ export default function Sidebar({
         </div>
       </div>
 
-      <div className="pt-4 border-t border-gray-800 flex items-center justify-between">
+      <div className="sidebar-footer">
         <div>
-          <p className="text-sm font-medium text-white">{user.username}</p>
-          <p className="text-xs text-indigo-400 uppercase tracking-wider font-semibold">
-            {user.role}
-          </p>
+          <p className="user-name">{user.username}</p>
+          <p className="user-role">{user.role}</p>
         </div>
-        <button
-          onClick={onLogout}
-          className="p-2 hover:bg-gray-800 rounded-lg text-gray-400 hover:text-white transition"
-          title="Logout"
-        >
-          <LogOut className="w-5 h-5" />
+        <button onClick={onLogout} className="logout-btn" title="Logout">
+          <LogOut size={20} />
         </button>
       </div>
     </aside>
