@@ -1,11 +1,11 @@
 import React from "react";
-import { Antenna, LogOut } from "lucide-react";
+import { ShieldCheck, LogOut } from "lucide-react";
 
 const SAMPLE_QUESTIONS = [
-  "Why is my mobile internet so slow?",
-  "My calls keep dropping — what should I do?",
-  "How do I activate international roaming?",
-  "Why is my bill higher than usual this month?",
+  "What is the primary tech stack for our frontend and backend microservices?",
+  "What were our primary growth metrics and marketing spend in Q1 2024?",
+  "What are the statutory employee benefits and leave entitlement policies?",
+  "What was the total revenue, gross margin, and net income for FY 2024?",
 ];
 
 export default function Sidebar({
@@ -18,8 +18,8 @@ export default function Sidebar({
     <aside className="sidebar">
       <div>
         <div className="sidebar-header">
-          <Antenna className="sidebar-icon" />
-          <h1 className="sidebar-title">Telecom Support</h1>
+          <ShieldCheck className="sidebar-icon" />
+          <h1 className="sidebar-title">SecurDocs.AI</h1>
         </div>
         <p className="sidebar-subtitle">Powered by RAG • Qwen3-32B on Groq</p>
 

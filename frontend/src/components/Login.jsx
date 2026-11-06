@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Lock } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
 export default function Login({ onLoginSuccess }) {
   const [usernameInput, setUsernameInput] = useState("");
@@ -31,12 +31,12 @@ export default function Login({ onLoginSuccess }) {
       <div className="login-card">
         <div className="login-icon-wrap">
           <div className="login-icon-bg">
-            <Lock size={32} />
+            <ShieldCheck size={32} />
           </div>
         </div>
-        <h2 className="login-title">ContextGuard Login</h2>
+        <h2 className="login-title">SecurDocs.AI Login</h2>
         <p className="login-subtitle">
-          Enter your credentials to access authorized RAG documents.
+          Enter your credentials to access role-authorized RAG documents.
         </p>
 
         {loginError && <div className="login-error">{loginError}</div>}

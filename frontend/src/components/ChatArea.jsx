@@ -28,10 +28,9 @@ export default function ChatArea({
 
       {messages.length === 0 ? (
         <div className="hero-container">
-          <h1 className="hero-title">Customer Care Assistant</h1>
+          <h1 className="hero-title">SecurDocs.AI Assistant</h1>
           <p className="hero-subtitle">
-            Ask me anything about your mobile service — connectivity, billing,
-            SIM, roaming, and more.
+            Ask me anything about company engineering specifications, financial summaries, marketing reports, and HR policies.
           </p>
         </div>
       ) : (
@@ -51,7 +50,7 @@ export default function ChatArea({
         <form onSubmit={handleSubmit} className="chat-form">
           <input
             type="text"
-            placeholder="Describe your issue..."
+            placeholder="Describe your issue or ask a question..."
             value={inputQuery}
             onChange={(e) => setInputQuery(e.target.value)}
             disabled={isStreaming}
